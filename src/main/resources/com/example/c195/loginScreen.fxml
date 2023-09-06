@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="250.0" minWidth="500.0" prefHeight="250.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controller.Login">
+   <children>
+      <Text layoutX="150.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome! Please log in" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Text>
+      <Label layoutX="137.0" layoutY="99.0" text="Username:">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="135.0" text="Password:">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="218.0" layoutY="94.0" />
+      <TextField layoutX="218.0" layoutY="130.0" />
+      <Button fx:id="login" layoutX="251.0" layoutY="178.0" mnemonicParsing="false" onAction="#OnActionLogin" text="Login" />
+      <Button fx:id="Exit" layoutX="317.0" layoutY="178.0" mnemonicParsing="false" onAction="#OnActionExit" text="Exit" />
+   </children>
+</AnchorPane>
