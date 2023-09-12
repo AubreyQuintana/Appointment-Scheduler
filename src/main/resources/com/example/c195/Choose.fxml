@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="250.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.c195.Choose">
+   <children>
+      <Text layoutX="140.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which would you like to view?" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font></Text>
+      <Button fx:id="informationBtn" layoutX="109.0" layoutY="113.0" mnemonicParsing="false" onAction="#OnActionInformation" text="Customer Records" />
+      <Button fx:id="appointmentBtn" layoutX="264.0" layoutY="113.0" mnemonicParsing="false" onAction="#OnActionAppointment" text="Appointments" />
+   </children>
+</AnchorPane>

@@ -1,11 +1,14 @@
-package com.example.Controller;
+package com.example.c195;
 
+import DAOimplementation.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utility.DatabaseConnection;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class HelloApplication extends Application {
     @Override
@@ -17,8 +20,20 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+
+        DatabaseConnection.openConnection();
+        //int rowsAffected = QueryExecution.updateCustomer(3, "Dudley Do-Right");
+        CustomerCRUD.select();
+        CountryCRUD.select();
+        FirstLevelDivisionCRUD.select();
+        AppointmentsCRUD.select();
+        ContactCRUD.select();
+
         launch();
+        DatabaseConnection.closeConnection();
+
+
     }
 
 }
