@@ -4,8 +4,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.c195.AddCustomers">
    <children>
       <Text layoutX="26.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a New Customer">
@@ -25,10 +23,10 @@
       <TextField fx:id="customerAddressTxt" layoutX="116.0" layoutY="180.0" />
       <TextField fx:id="customerZipTxt" layoutX="119.0" layoutY="225.0" />
       <TextField fx:id="customerPhoneTxt" layoutX="118.0" layoutY="347.0" />
-      <ComboBox fx:id="customerCountryCBox" layoutX="119.0" layoutY="266.0" promptText="Select a Country" prefWidth="150.0">
+      <ComboBox fx:id="customerCountryCBox" layoutX="119.0" layoutY="266.0" prefWidth="150.0" promptText="Select a Country">
       </ComboBox>
 
-      <ComboBox fx:id="customerStateCBox" layoutX="117.0" layoutY="304.0" promptText="Select a State/Province" prefWidth="150.0">
+      <ComboBox fx:id="customerStateCBox" layoutX="117.0" layoutY="304.0" onMouseClicked="#OnActionStateCBox" prefWidth="150.0" promptText="Select a State/Province">
 
       </ComboBox>
       <Label layoutX="25.0" layoutY="308.0" text="State/Province" />

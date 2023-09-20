@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.c195.UpdateRecord">
+<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.c195.UpdateCustomer">
     <children>
         <Text layoutX="26.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update a Customer's Record">
             <font>
@@ -15,7 +15,7 @@
         <Label layoutX="25.0" layoutY="184.0" text="Address" />
         <Label layoutX="27.0" layoutY="229.0" text="Postal Code" />
         <Label layoutX="28.0" layoutY="360.0" text="Phone Number" />
-        <TextField editable="false" layoutX="116.0" layoutY="102.0" opacity="0.41" text="Disabled - Auto Gen">
+        <TextField fx:id="upCustomerIDTxt" editable="false" layoutX="116.0" layoutY="102.0" opacity="0.41">
             <font>
                 <Font name="System Italic" size="12.0" />
             </font></TextField>
@@ -23,7 +23,7 @@
         <TextField fx:id="upCustomerAddressTxt" layoutX="116.0" layoutY="180.0" />
         <TextField fx:id="upCustomerPhoneTxt" layoutX="119.0" layoutY="356.0" />
         <TextField fx:id="upCustomerZipTxt" layoutX="116.0" layoutY="225.0" />
-        <ComboBox fx:id="upStateComboBox" layoutX="119.0" layoutY="311.0" prefWidth="150.0" />
+        <ComboBox fx:id="upStateComboBox" layoutX="119.0" layoutY="311.0" onMouseClicked="#OnActionUpStateCBox" prefWidth="150.0" />
         <ComboBox fx:id="upCountryComboBox" layoutX="118.0" layoutY="268.0" prefWidth="150.0" />
         <Label layoutX="25.0" layoutY="315.0" text="State/Province" />
         <Label layoutX="26.0" layoutY="272.0" text="Country" />

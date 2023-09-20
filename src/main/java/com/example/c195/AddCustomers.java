@@ -1,9 +1,8 @@
 package com.example.c195;
 
+import DAOimplementation.CountryCRUD;
 import DAOimplementation.CustomerCRUD;
-import DAOinterfaces.CountryDAO;
-import DAOinterfaces.CustomerDAO;
-import DAOinterfaces.FirstLevelDivisionDAO;
+import DAOimplementation.FirstLevelDivisionCRUD;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +15,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.Country;
+import model.Customer;
+import model.FirstLevelDivision;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,33 +41,37 @@ public class AddCustomers implements Initializable {
     @FXML
     public TextField customerPhoneTxt;
     @FXML
-    public ComboBox<String> customerCountryCBox;
+    public ComboBox<Country> customerCountryCBox;
     @FXML
-    public ComboBox<String> customerStateCBox;
+    public ComboBox<FirstLevelDivision> customerStateCBox;
 
-    public static int customerCounter = CustomerDAO.getAllCustomers().size();
+    public static int customerCounter = CustomerCRUD.counter;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        ObservableList<String> countryNames = FXCollections.observableArrayList();
-        ObservableList<String> divisionNames = FXCollections.observableArrayList();
-
-        //Lamda expressions - making country name list from countries
-        CountryDAO.getAllCountries().forEach(country -> {
-            countryNames.add(country.getCountry());
-        });
-
-        FirstLevelDivisionDAO.getAllDivisions().forEach(firstLevelDivision -> {
-            divisionNames.add(firstLevelDivision.getDivision());
-        });
-
-        //if (FirstLevelDivision.countryID)
-        customerCountryCBox.setItems(countryNames);
-        customerStateCBox.setItems(divisionNames);
+        try {
+            customerCountryCBox.setItems(CountryCRUD.getAllCountries());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            customerStateCBox.setItems(FirstLevelDivisionCRUD.getAllDivisions());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
+    @FXML
+    public void OnActionStateCBox(MouseEvent event) throws SQLException {
+
+        Country country = customerCountryCBox.getValue(); //NULL VALUE BECAUSE VALUE ISN'T ACTUALLY STORED ANYWHERE
+        int countryID = country.getCountryID();
+
+        customerStateCBox.setItems(FirstLevelDivisionCRUD.getDivisionsByCountry(countryID));
+
+    }
     @FXML
     public void OnActionAddCustomer(ActionEvent event) throws IOException {
 
@@ -74,21 +81,15 @@ public class AddCustomers implements Initializable {
             String customerAddress = customerAddressTxt.getText();
             String customerZip = customerZipTxt.getText();
             String customerPhone = customerPhoneTxt.getText();
-            int customerDivisionID = 0;  //- not accurate, how to give division ID when given country and state
-            String customerCountry = customerCountryCBox.getValue();
-            String customerState = customerStateCBox.getValue();
+            Country customerCountry = customerCountryCBox.getValue();
+            FirstLevelDivision customerState = customerStateCBox.getValue();
 
-            //this gives country ID, not division ID -- NEED TO FIX FOR DIVISION ID
-            switch (customerCountry) {
-                case "U.S" -> customerDivisionID = 1;
-                case "UK" -> customerDivisionID = 2;
-                case "Canada" -> customerDivisionID = 3;
-            }
+            int customerDivisionID = customerState.getDivisionID();
 
             int rowsAffected = CustomerCRUD.insert(customerName, customerAddress, customerZip, customerPhone, customerDivisionID);
 
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            Parent scene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Records.fxml")));
+            Parent scene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Customer.fxml")));
             stage.setScene(new Scene(scene));
             stage.show();
 
@@ -104,31 +105,10 @@ public class AddCustomers implements Initializable {
     public void OnActionCancelAddCustomer(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        Parent scene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Records.fxml")));
+        Parent scene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Customer.fxml")));
         stage.setScene(new Scene(scene));
         stage.show();
     }
-
-    //public void CustomerCountryCBox{
-
-        /*ObservableList<String> countryComboBox = FXCollections.observableArrayList(
-                "United States",
-                "United Kingdom",
-                "Canada"
-        );
-
-        customerCountryCBox.setItems(countryComboBox);
-    }
-
-    @FXML
-    public void OnActionCustomerStateCBox(ActionEvent event) {
-
-        ObservableList<String> stateComboBox = FXCollections.observableArrayList(
-                "Alabama", "Alaska", "Arizona"
-        );
-
-        customerStateCBox.setItems(stateComboBox);
-    } */
 
 }
 

@@ -8,11 +8,13 @@
     <children>
         <TableView fx:id="customerTableView" layoutX="19.0" layoutY="77.0" prefHeight="460.0" prefWidth="1068.0">
             <columns>
-                <TableColumn fx:id="customerIDCol" prefWidth="96.0" text="Customer ID" />
-                <TableColumn fx:id="customerNameCol" prefWidth="243.0" text="Name" />
-                <TableColumn fx:id="customerAddressCol" prefWidth="419.0" text="Address" />
-                <TableColumn fx:id="customerZipCol" prefWidth="101.0" text="Postal Code" />
-                <TableColumn fx:id="customerPhoneCol" prefWidth="208.0" text="Phone Number" />
+                <TableColumn fx:id="customerIDCol" prefWidth="102.0" text="Customer ID" />
+                <TableColumn fx:id="customerNameCol" prefWidth="198.0" text="Name" />
+                <TableColumn fx:id="customerAddressCol" prefWidth="201.0" text="Address" />
+            <TableColumn fx:id="customerStateCol" minWidth="0.0" prefWidth="195.0" text="State/Province" />
+            <TableColumn fx:id="customerCountryCol" maxWidth="500.0" prefWidth="106.0" text="Country" />
+            <TableColumn fx:id="customerZipCol" minWidth="0.0" prefWidth="121.0" text="Postal Code" />
+            <TableColumn fx:id="customerPhoneCol" prefWidth="143.0" text="Phone Number" />
 
             </columns>
         </TableView>

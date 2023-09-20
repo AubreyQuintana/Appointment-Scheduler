@@ -21,7 +21,7 @@ public class Choose {
     public void OnActionInformation(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        Parent scene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Records.fxml")));
+        Parent scene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Customer.fxml")));
         stage.setScene(new Scene(scene));
         stage.show();
     }

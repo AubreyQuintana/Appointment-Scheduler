@@ -6,9 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utility.DatabaseConnection;
+import utility.TimeConversion;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.ZoneId;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class HelloApplication extends Application {
     @Override
@@ -20,17 +24,20 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
+
 
         DatabaseConnection.openConnection();
-        //int rowsAffected = QueryExecution.updateCustomer(3, "Dudley Do-Right");
-        CustomerCRUD.select();
-        CountryCRUD.select();
-        FirstLevelDivisionCRUD.select();
-        AppointmentsCRUD.select();
-        ContactCRUD.select();
-
         launch();
+
+        /*ResourceBundle rb = ResourceBundle.getBundle("main/java/utility/RB_fr.properties", Locale.getDefault());
+
+        if (Locale.getDefault().getLanguage().equals("fr")) {
+            System.out.println(rb.getString("hello"));
+        }*/
+
+
+
         DatabaseConnection.closeConnection();
 
 

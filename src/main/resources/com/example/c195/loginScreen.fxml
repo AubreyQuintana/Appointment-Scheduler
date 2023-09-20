@@ -21,11 +21,11 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="218.0" layoutY="102.0" />
-      <TextField layoutX="218.0" layoutY="138.0" />
-      <Button fx:id="login" layoutX="251.0" layoutY="178.0" mnemonicParsing="false" onAction="#OnActionLogin" text="Login" />
-      <Button fx:id="Exit" layoutX="317.0" layoutY="178.0" mnemonicParsing="false" onAction="#OnActionExit" text="Exit" />
+      <TextField fx:id="userNameTxt" layoutX="218.0" layoutY="102.0" />
+      <TextField fx:id="passwordTxt" layoutX="218.0" layoutY="138.0" />
+      <Button fx:id="loginBtn" layoutX="251.0" layoutY="178.0" mnemonicParsing="false" onAction="#OnActionLoginBtn" text="Login" />
+      <Button fx:id="Exit" layoutX="317.0" layoutY="178.0" mnemonicParsing="false" onAction="#OnActionExitBtn" text="Exit" />
       <Label layoutX="189.0" layoutY="63.0" text="Zone ID:" />
-      <Label layoutX="247.0" layoutY="63.0" text="Location" />
+      <Label fx:id="locationTxt" layoutX="247.0" layoutY="63.0" text="Location" />
    </children>
 </AnchorPane>
