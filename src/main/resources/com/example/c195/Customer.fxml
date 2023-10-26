@@ -26,5 +26,6 @@
         <Button fx:id="updateCustomerBtn" layoutX="860.0" layoutY="553.0" mnemonicParsing="false" onAction="#OnActionUpdateRecord" text="Update" />
         <Button layoutX="928.0" layoutY="553.0" mnemonicParsing="false" onAction="#OnActionDeleteCustomerBtn" text="Delete" />
         <Button fx:id="cBackBtn" layoutX="1026.0" layoutY="553.0" mnemonicParsing="false" onAction="#OnActionCBackBtn" text="Back" />
+      <Button layoutX="983.0" layoutY="22.0" mnemonicParsing="false" onAction="#OnActionViewReportsBtn" text="View Reports" />
     </children>
 </AnchorPane>

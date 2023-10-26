@@ -1,19 +1,17 @@
 package com.example.c195;
 
-import DAOimplementation.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utility.DatabaseConnection;
-import utility.TimeConversion;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.time.ZoneId;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
+/**
+ * This class runs the start of the software.
+ * @author Aubrey Quintana
+ */
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -24,19 +22,14 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+    /**
+     * This is the main method. First method that gets called when starting the software.
+     * @param args Not used
+     */
     public static void main(String[] args) {
-
 
         DatabaseConnection.openConnection();
         launch();
-
-        /*ResourceBundle rb = ResourceBundle.getBundle("main/java/utility/RB_fr.properties", Locale.getDefault());
-
-        if (Locale.getDefault().getLanguage().equals("fr")) {
-            System.out.println(rb.getString("hello"));
-        }*/
-
-
 
         DatabaseConnection.closeConnection();
 

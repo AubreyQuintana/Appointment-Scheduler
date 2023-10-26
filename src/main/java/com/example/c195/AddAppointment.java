@@ -1,7 +1,7 @@
 package com.example.c195;
 
-import DAOimplementation.*;
 import javafx.collections.FXCollections;
+import objectCRUDs.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,17 +15,20 @@ import model.Appointment;
 import model.Contact;
 import model.Customer;
 import model.User;
+import utility.TimeUtility;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import static DAOimplementation.AppointmentsCRUD.getAllAppointments;
-
+/**
+ * This class represents your Appointments page.
+ * It holds the Appointment data and displays Appointment information.
+ * @author Aubrey Quintana
+ */
 public class AddAppointment implements Initializable {
     @FXML
     public Button addAppointment;
@@ -55,44 +58,52 @@ public class AddAppointment implements Initializable {
     public ComboBox<LocalTime> startTimeCBox;
     @FXML
     public ComboBox<LocalTime> endTimeCBox;
-
     public static int apptCounter = 4;
 
+    /**
+     * This method is used to initialize any data that needs to be run first.
+     * Such as, creating the Appointment table view.
+     */
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        //Populate the Contact combo box with Contact names
         try {
             apptContactCBox.setItems(ContactCRUD.getAllContacts());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
+        //Populate the Customer combo box with Customer names
         try {
             apptCustomerCBox.setItems(CustomerCRUD.getAllCustomers());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
+        //Populate the User combo box with usernames
         try {
             apptUserCBox.setItems(UsersCRUD.getAllUsers());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        LocalTime start = LocalTime.of(8, 0);
-        LocalTime end = LocalTime.of(20, 0);
-
-        //NEED TO ADD CONDITIONS FOR OVERLAPPING APPOINTMENTS
-        //DONT FORGET TO EXCLUDE CURRENT APPT TIME USING APPT ID
-        while (start.isBefore(end.plusSeconds(1))) {
-            startTimeCBox.getItems().add(start);
-            endTimeCBox.getItems().add(start);
-            start = start.plusMinutes(30);
-        }
+        //Populate time combo boxes with local timezone times based off EST business hours
+        startTimeCBox.setItems(TimeUtility.getStartTimes());
+        endTimeCBox.setItems(TimeUtility.getEndTimes());
     }
 
-    public void OnActionAddAppointment(ActionEvent event) throws IOException {
+    /**
+     * This method allows the user to input data into the add appointment form.
+     * @param event Event occurs when user clicks on Add button.
+     * @throws IOException Throws exception when error loading the Add Appointment page.
+     * @throws SQLException Throws exception when error connecting to the MySQL database.
+     */
+    @FXML
+    public void OnActionAddAppointment(ActionEvent event) throws IOException, SQLException {
 
         try {
+            //Get data from user input to add to the Appointment database
             int apptID = apptCounter++;
             String title = apptTitleTxt.getText();
             String description = apptDescTxt.getText();
@@ -103,35 +114,18 @@ public class AddAppointment implements Initializable {
             LocalDate startDate = apptStartDate.getValue();
             LocalDate endDate = apptEndDate.getValue();
             Contact contact = apptContactCBox.getValue();
-            int contactID = contact.getContactID();
             Customer customer = apptCustomerCBox.getValue();
-            int customerID = customer.getCustomerID();
             User user = apptUserCBox.getValue();
+            //Convert combo box values to the associated IDs to add to Appointment class
+            int contactID = contact.getContactID();
+            int customerID = customer.getCustomerID();
             int userID = user.getUserID();
-
-            //Convert LocalTime & LocalDate to one object
+            //Convert local date and local time to one LDT object to add to Appointment class
             LocalDateTime startDateTime = LocalDateTime.of(startDate, startTime);
             LocalDateTime endDateTime = LocalDateTime.of(endDate, endTime);
 
-            ZoneId zoneID = ZoneId.systemDefault();
-            ZonedDateTime startZDT = ZonedDateTime.of(startDateTime, zoneID);
-            ZonedDateTime endDZT = ZonedDateTime.of(endDateTime, zoneID);
-
-
-            //Appointment class wants LocalDateTime object, not ZonedDateTime object soooo???
-            String startDT = startZDT.toLocalDate().toString() + " " + startZDT.toLocalTime().toString();
-
-            //ERROR if start date is after end date
-            if (startDate.isAfter(endDate)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error dialog");
-                alert.setContentText("Your start date must be before your end date.");
-                alert.showAndWait();
-                return;
-            }
-
-            //ERROR if start time is after end time
-            if (startTime.isAfter(endTime)) {
+            //Check to make sure appointment times are in chronological order
+            if (startDateTime.isAfter(endDateTime)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error dialog");
                 alert.setContentText("Your start time must be before your end time.");
@@ -139,36 +133,39 @@ public class AddAppointment implements Initializable {
                 return;
             }
 
-            //ERROR if entering an incorrect contact, customer, user -- not sure if I need since I changed to comboboxes??
-            if (ContactCRUD.getAllContacts().contains(contact) ||
-                    CustomerCRUD.getAllCustomers().contains(customer) ||
-                    UsersCRUD.getAllUsers().contains(user)) {
-
-                AppointmentsCRUD.insert(title, description, location, type, startDateTime, endDateTime, customerID, userID, contactID);
-            }
-            else {
+            //Check to make sure appointment times don't overlap with existing appointments of the same customer
+            ObservableList<Appointment> customerAppointments = AppointmentsCRUD.getCustomerAppointments(customerID);
+            boolean isOverlapping = AppointmentsCRUD.checkOverlap(customerAppointments, startDateTime, endDateTime, -1);
+            if (isOverlapping) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error dialog");
-                alert.setContentText("Please choose a correct contact ID, customer ID");
+                alert.setContentText("You already have an appointment scheduled at that time.");
                 alert.showAndWait();
                 return;
+            } else {
+                //If pass all checks, new Appointment is added to the database
+                AppointmentsCRUD.insert(title, description, location, type, startDateTime, endDateTime, customerID, userID, contactID);
             }
 
-            //Once information is entered, takes you back to appointment table
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             Parent scene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Appointment.fxml")));
             stage.setScene(new Scene(scene));
             stage.show();
-
-        } catch (SQLException e) {
+        }
+        catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error dialog");
             alert.setContentText("Please enter valid value for each field");
             alert.showAndWait();
         }
-
     }
 
+    /**
+     * This method allows the user to navigate to the Appointment page.
+     * @param event Event occurs when user clicks on the Cancel button.
+     * @throws IOException Throws exception when error loading the Appointment page.
+     */
+    @FXML
     public void OnActionCancelAddAppointment(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

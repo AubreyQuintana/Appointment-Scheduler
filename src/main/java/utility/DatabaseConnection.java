@@ -3,6 +3,10 @@ package utility;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * This class holds information to connect to the MySQL Database.
+ * @author Aubrey Quintana
+ */
 public abstract class DatabaseConnection {
 
     private static final String protocol = "jdbc";
@@ -15,6 +19,9 @@ public abstract class DatabaseConnection {
     private static String password = "Passw0rd!"; // Password
     public static Connection connection;  // Connection Interface
 
+    /**
+     * This method opens the connection to the MySQL Database.
+     */
     public static void openConnection()
     {
         try {
@@ -28,6 +35,9 @@ public abstract class DatabaseConnection {
         }
     }
 
+    /**
+     * This method closes the connection to the MySQL Database.
+     */
     public static void closeConnection() {
         try {
             connection.close();

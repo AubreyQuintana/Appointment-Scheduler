@@ -6,18 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bad77551-ad54-4cef-86d0-a7ea78e3a493" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/AppointmentsCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOimplementation/AppointmentsCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/ContactCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOimplementation/ContactCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/CountryCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOimplementation/CountryCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/CustomerCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOimplementation/CustomerCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/FirstLevelDivisionCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOimplementation/FirstLevelDivisionCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/UsersCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOimplementation/UsersCRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOinterfaces/AppointmentsDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOinterfaces/ContactDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOinterfaces/CountryDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOinterfaces/CustomerDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOinterfaces/FirstLevelDivisionDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAOinterfaces/UsersDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/AppointmentsCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objectCRUDs/AppointmentsCRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/ContactCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objectCRUDs/ContactCRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/CountryCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objectCRUDs/CountryCRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/CustomerCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objectCRUDs/CustomerCRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/FirstLevelDivisionCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objectCRUDs/FirstLevelDivisionCRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOimplementation/UsersCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objectCRUDs/UsersCRUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/c195/AddAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/c195/AddAppointment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/c195/AddCustomers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/c195/AddCustomers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/c195/Appointments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/c195/Appointments.java" afterDir="false" />
@@ -26,21 +20,18 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/c195/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/c195/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/c195/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/c195/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/c195/UpdateAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/c195/UpdateAppointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/c195/UpdateRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/c195/UpdateCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/c195/UpdateCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/c195/UpdateCustomer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Appointment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Contact.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Country.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/FirstLevelDivision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/FirstLevelDivision.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/CollectionManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/FunctionalInterfaces.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utility/TimeConversion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/TimeConversion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/c195/AddAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/c195/AddAppointment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/c195/AddRecord.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/c195/AddCustomer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/c195/Records.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/c195/Customer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/c195/UpdateAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/c195/UpdateAppointment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/c195/UpdateRecord.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/c195/UpdateCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utility/TimeConversion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/TimeUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/c195/Choose.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/c195/Choose.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/c195/Customer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/c195/Customer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/c195/loginScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/c195/loginScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +42,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
       </list>
@@ -95,6 +87,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Aubrey\IdeaProjects\AQapplication\C195\src\main\resources\com\example\c195" />
+      <recent name="C:\Users\Aubrey\IdeaProjects\AQapplication\C195\src\main\resources" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -113,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694551905145</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=".">
+      <created>1695246327204</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695246327204</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
