@@ -24,7 +24,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * This class represents your Appointments screen.
+ * This class represents your Appointments page.
  * Holds all appointment data and displays appointment information.
  * @author Aubrey Quintana
  */

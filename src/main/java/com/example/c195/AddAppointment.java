@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
- * This class represents your Appointments page.
+ * This class allows the user to add new appointment data.
  * It holds the Appointment data and displays Appointment information.
  * @author Aubrey Quintana
  */

@@ -24,7 +24,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
- * This class represents your Reports screen.
+ * This class represents your Reports page.
  * @author Aubrey Quintana
  */
 public class Reports implements Initializable {
